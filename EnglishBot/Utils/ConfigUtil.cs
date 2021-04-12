@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace EnglishBot.Utils
 {
@@ -9,11 +10,11 @@ namespace EnglishBot.Utils
         {
             var filePath = Path.Combine(AppContext.BaseDirectory, "appsettings.json");
             var json = File.ReadAllText(filePath);
-            dynamic jsonObj = Newtonsoft.Json.JsonConvert.DeserializeObject(json);
+            dynamic jsonObj = JsonConvert.DeserializeObject(json);
 
             SetValueRecursively(sectionPathKey, jsonObj, value);
 
-            string output = Newtonsoft.Json.JsonConvert.SerializeObject(jsonObj, Newtonsoft.Json.Formatting.Indented);
+            string output = JsonConvert.SerializeObject(jsonObj, Formatting.Indented);
             File.WriteAllText(filePath, output);
         }
 

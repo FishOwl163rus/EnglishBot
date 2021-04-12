@@ -29,11 +29,12 @@ namespace EnglishBot
                         
                         api.Authorize(new ApiAuthParams
                         {
-                            AccessToken = hostContext.Configuration["VKToken"]
+                            AccessToken = provider.GetService<IConfiguration>()["VKToken"]
                         });
                         
                         return api;
                     });
+                    
                     services.AddSingleton<IAsset, AssetManager>();
                     services.AddHostedService<BotService>();
                 });

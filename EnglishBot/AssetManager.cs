@@ -2,9 +2,6 @@
 using System.IO;
 using EnglishBot.Interfaces;
 using EnglishBot.Utils;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 
 namespace EnglishBot
 {

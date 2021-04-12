@@ -31,6 +31,7 @@ namespace EnglishBot
             _api = api;
             
             _asset.Load();
+            _asset.CurrentIndex = int.Parse(config["CurrentIndex"]);
         }
 
         private void UploadAndPost(string path)
@@ -60,10 +61,10 @@ namespace EnglishBot
                 
                 _logger.Log(LogLevel.Information, "Создано изображение: {0}. Текуший индекс: {1}.", newImage, _asset.CurrentIndex);
                 
-                UploadAndPost(newImage);
-                
                 _asset.CurrentIndex++;
                 
+                UploadAndPost(newImage);
+
                 await Task.Delay(1000 * 1800, stoppingToken);
             }
         }
